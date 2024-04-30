@@ -58,7 +58,7 @@
           "templates": [
             "{{ if .Commit.Sha }}{{ .HEAD }}{{ else }} (new){{ end }}",
             "{{ if or .Working.Changed .Staging.Changed }} *{{ end }}",
-            "{{ if and (not .Working.Changed) (not .Staging.Changed) }} ✓{{ end }}",
+            "{{ if and (.Commit.Sha) (not .Working.Changed) (not .Staging.Changed) }} ✓{{ end }}",
             "{{ if .StashCount }} ⚑{{ end }}"
           ]
         },
