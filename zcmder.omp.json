@@ -1,0 +1,81 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "version": 2,
+  "final_space": true,
+  "blocks": [
+    {
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "python",
+          "style": "plain",
+          "foreground": "yellow",
+          "template": "{{ .Venv }}:{{ .Major }}.{{ .Minor }} "
+        },
+        {
+          "type": "session",
+          "foreground": "blue",
+          "foreground_templates": ["{{if .Root }}red{{ end }}"],
+          "style": "plain",
+          "templates": [
+            "{{ if .Env.ZCMDER_USERNAME }}{{ .UserName }}{{end}} ",
+            "{{ if and .Env.ZCMDER_USERNAME .Env.ZCMDER_HOSTNAME }}@{{end}} ",
+            "{{ if .Env.ZCMDER_HOSTNAME }}{{ .HostName }}{{end}} "
+          ]
+        },
+        {
+          "type": "path",
+          "style": "plain",
+          "foreground": "green",
+          "foreground_templates": ["{{ if not .Writable }}red{{ end }}"],
+          "properties": {
+            "style": "full",
+            "folder_separator_icon": "/"
+          },
+          "template": "{{ .Path }}{{ if not .Writable }} {{ end }} "
+        },
+        {
+          "type": "text",
+          "style": "plain",
+          "template": "{{ if .Segments.Contains \"Git\" }}on {{ end }}"
+        },
+        {
+          "type": "git",
+          "style": "plain",
+          "foreground": "cyan",
+          "foreground_templates": [
+            "{{ if gt .Working.Unmerged 0 }}magenta{{ end }}",
+            "{{ if gt .Working.Untracked 0 }}red{{ end }}",
+            "{{ if .Working.Changed }}yellow{{ end }}",
+            "{{ if not .Commit.Sha }}darkGray{{ end }}",
+            "{{ if .Staging.Changed }}blue{{ end }}"
+          ],
+          "properties": {
+            "branch_icon": " ",
+            "fetch_status": true,
+            "fetch_upstream_icon": false
+          },
+          "templates": [
+            "{{ if .Commit.Sha }}{{ .HEAD }}{{ else }} (new){{ end }}",
+            "{{ if or .Working.Changed .Staging.Changed }} *{{ end }}",
+            "{{ if and (not .Working.Changed) (not .Staging.Changed) }} ✓{{ end }}",
+            "{{ if .StashCount }} ⚑{{ end }}"
+          ]
+        },
+        {
+          "type": "text",
+          "style": "plain",
+          "template": "\n"
+        },
+        {
+          "type": "text",
+          "style": "plain",
+          "foreground": "darkGray",
+          "foreground_templates": ["{{ if gt .Code 0 }}red{{ end }}"],
+          "template": "{{ if .Root }}#{{ else }}λ{{ end }}"
+        }
+      ],
+      "type": "prompt"
+    }
+  ]
+}
