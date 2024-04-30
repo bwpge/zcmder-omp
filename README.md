@@ -27,35 +27,3 @@ oh-my-posh init pwsh --config 'https://raw.githubusercontent.com/bwpge/zcmder-om
 ```
 
 Refer to the [oh-my-posh documentation](https://ohmyposh.dev/docs/installation/prompt) for shell-specific initialization.
-
-## New line after command
-
-Adding a new line after commands is fairly shell-specific. The following are snippets that can be used to get this functionality with `oh-my-posh`.
-
-### zsh
-
-Add the following anywhere in your zsh config:
-
-```sh
-autoload -Uz add-zsh-hook
-__newline_precmd() {
-    $funcstack[1]() {
-        echo
-    }
-}
-add-zsh-hook precmd __newline_precmd
-```
-
-### PowerShell
-
-Add the following to your `$PROFILE` script **after** initializing `oh-my-posh`:
-
-```powershell
-$global:__omp_prompt = $function:prompt
-function global:prompt {
-    if (!$Host.UI.RawUI.CursorPosition.Y -eq 0) {
-        Write-Host
-    }
-    & $__omp_prompt
-}
-```

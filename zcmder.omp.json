@@ -7,6 +7,11 @@
       "alignment": "left",
       "segments": [
         {
+          "type": "text",
+          "style": "plain",
+          "template": "{{ if and (.Env.POSH_CURSOR_LINE) (ne .Env.POSH_CURSOR_LINE \"1\") }}\n{{ end }}"
+        },
+        {
           "type": "python",
           "style": "plain",
           "foreground": "yellow",
