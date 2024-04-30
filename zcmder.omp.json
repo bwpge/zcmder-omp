@@ -47,8 +47,8 @@
             "{{ if gt .Working.Unmerged 0 }}magenta{{ end }}",
             "{{ if gt .Working.Untracked 0 }}red{{ end }}",
             "{{ if .Working.Changed }}yellow{{ end }}",
-            "{{ if not .Commit.Sha }}darkGray{{ end }}",
-            "{{ if .Staging.Changed }}blue{{ end }}"
+            "{{ if .Staging.Changed }}blue{{ end }}",
+            "{{ if not .Commit.Sha }}darkGray{{ end }}"
           ],
           "properties": {
             "branch_icon": " ",
