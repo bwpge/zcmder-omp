@@ -57,6 +57,9 @@
           ],
           "properties": {
             "branch_icon": " ",
+            "commit_icon": " ",
+            "tag_icon": " ",
+            "cherry_pick_icon": " ",
             "fetch_status": true,
             "fetch_upstream_icon": false
           },
