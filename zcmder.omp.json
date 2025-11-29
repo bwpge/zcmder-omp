@@ -77,6 +77,7 @@
           "type": "git",
           "style": "plain",
           "foreground_templates": [
+            "{{ if and (gt .Behind 0) (gt .Ahead 0) }}magenta{{ end }}",
             "{{ if gt .Working.Unmerged 0 }}magenta{{ end }}",
             "{{ if gt .Working.Untracked 0 }}red{{ end }}",
             "{{ if .Working.Changed }}yellow{{ end }}",
@@ -86,9 +87,9 @@
           "templates": [
             "{{ if .Commit.Sha }}{{ .HEAD }}{{ else }} (new){{ end }}",
             "{{ if or .Working.Changed .Staging.Changed }} *{{ end }}",
-            "{{ if and (gt .Ahead 0) (gt .Behind 0) }} ↑↓{{ end }}",
-            "{{ if gt .Behind 0 }} ↓{{ end }}",
-            "{{ if gt .Ahead 0 }} ↑{{ end }}",
+            "{{ if and (gt .Behind 0) (gt .Ahead 0) }} ↑↓{{ end }}",
+            "{{ if and (gt .Behind 0) (eq .Ahead 0) }} ↓{{ end }}",
+            "{{ if and (eq .Behind 0) (gt .Ahead 0 ) }} ↑{{ end }}",
             "{{ if and (.Commit.Sha) (not .Working.Changed) (not .Staging.Changed) }} ✓{{ end }}",
             "{{ if .StashCount }} ⚑{{ end }}"
           ]
