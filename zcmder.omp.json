@@ -8,7 +8,7 @@
       "alignment": "left",
       "segments": [
         {
-          "properties": {
+          "options": {
             "cache_duration": "24h",
             "strategy": "session"
           },
@@ -17,7 +17,7 @@
           "style": "plain"
         },
         {
-          "properties": {
+          "options": {
             "cache_duration": "none",
             "display_mode": "environment",
             "fetch_virtual_env": true,
@@ -29,7 +29,7 @@
           "style": "plain"
         },
         {
-          "properties": {
+          "options": {
             "cache_duration": "none"
           },
           "foreground": "blue",
@@ -44,8 +44,7 @@
           "templates_logic": "first_match"
         },
         {
-          "properties": {
-            "cache_duration": "none",
+          "options": {
             "folder_separator_icon": "/",
             "style": "full"
           },
@@ -56,7 +55,7 @@
           "foreground_templates": ["{{ if not .Writable }}red{{ end }}"]
         },
         {
-          "properties": {
+          "options": {
             "cache_duration": "none"
           },
           "template": "{{ if .Segments.Contains \"Git\" }}on {{ end }}",
@@ -64,9 +63,8 @@
           "style": "plain"
         },
         {
-          "properties": {
+          "options": {
             "branch_icon": " ",
-            "cache_duration": "none",
             "cherry_pick_icon": " ",
             "commit_icon": " ",
             "fetch_status": true,
@@ -95,7 +93,7 @@
           ]
         },
         {
-          "properties": {
+          "options": {
             "cache_duration": "none"
           },
           "template": "\n",
@@ -103,7 +101,7 @@
           "style": "plain"
         },
         {
-          "properties": {
+          "options": {
             "cache_duration": "none"
           },
           "template": "{{ if .Root }}#{{ else }}λ{{ end }}",
