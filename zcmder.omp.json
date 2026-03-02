@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
-  "version": 3,
+  "version": 4,
   "final_space": true,
   "blocks": [
     {
@@ -49,9 +49,9 @@
             "style": "full"
           },
           "template": "{{ .Path }}{{ if not .Writable }} {{ end }} ",
-          "foreground": "green",
           "type": "path",
           "style": "plain",
+          "foreground": "green",
           "foreground_templates": ["{{ if not .Writable }}red{{ end }}"]
         },
         {
